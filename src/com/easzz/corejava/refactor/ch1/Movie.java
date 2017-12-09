@@ -9,11 +9,11 @@ public class Movie {
 	public static final int NEW_RELEASE = 1;
 
 	private String _title;
-	private int _priceCode;
+	private AbstractPrice abstractPrice;
 
 	public Movie(String _title, int _priceCode) {
 		this._title = _title;
-		this._priceCode = _priceCode;
+		set_priceCode(_priceCode);
 	}
 
 	public String get_title() {
@@ -24,11 +24,28 @@ public class Movie {
 		this._title = _title;
 	}
 
-	public int get_priceCode() {
-		return _priceCode;
+	private void set_priceCode(int _priceCode) {
+		switch (_priceCode) {
+			case REGULAR:
+				abstractPrice = new RegularPrice();
+				break;
+			case CHILDRENS:
+				abstractPrice = new ChildrensPrice();
+				break;
+			case NEW_RELEASE:
+				abstractPrice = new NewReleasePrice();
+				break;
+			default:
+				throw new IllegalArgumentException("Incorrect Price Code");
+		}
 	}
 
-	public void set_priceCode(int _priceCode) {
-		this._priceCode = _priceCode;
+	public double countAmount(int daysRented) {
+		return abstractPrice.getDirPrice(daysRented);
+	}
+
+	public int countFrequentRenterPoints(int daysRented) {
+
+		return abstractPrice.getFrequentRenterPoints(daysRented);
 	}
 }
