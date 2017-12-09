@@ -14,6 +14,8 @@ public abstract class AbstractPrice {
 	 */
 	abstract double getDirPrice(int daysRented);
 
+
+
 	int getFrequentRenterPoints(int daysRented) {
 		return 1;
 	}
