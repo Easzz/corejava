@@ -13,7 +13,6 @@ public class Connector {
 
 	/**
 	 * 获得连接
-	 *
 	 * @param host
 	 * @param port
 	 * @throws IOException

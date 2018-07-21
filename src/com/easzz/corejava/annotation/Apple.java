@@ -8,6 +8,8 @@ public class Apple {
     @FruitName("apple")
     private String appleName;
 
+    private  String a;
+
 
     @FruitColor(fruitColor = FruitColor.Color.RED)
     private String appleColor;
